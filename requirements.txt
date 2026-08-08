@@ -1,0 +1,15 @@
+torch>=2.6
+torchvision>=0.21
+torchaudio>=2.6
+torchcodec>=0.7
+transformers>=4.53
+peft>=0.18
+safetensors>=0.5
+timm>=1.0
+numpy>=2.0
+tqdm>=4.66
+
+# Training and auxiliary evaluation only
+bitsandbytes>=0.45
+matplotlib>=3.9
+tensorboard>=2.18
