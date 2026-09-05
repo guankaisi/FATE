@@ -1,6 +1,6 @@
 # FATE: Frame-Level Audio-Visual Temporal Embedding
 
-Official implementation of Paper: [FATE: Frame-Level Audio-Visual Temporal Embedding](https://arxiv.org/abs/2608.01310)
+Official implementation of Paper: FATE: Frame-Level Audio-Visual Temporal Embedding
 
 ![FATE framework](assets/framework.png)
 
@@ -112,14 +112,6 @@ bash scripts/train_example.sh
 
 
 
-## Citation
 
-```bibtex
-@article{guan2026fate,
-  title={FATE: Frame-Level Audio-Visual Temporal Embedding},
-  author={Guan, Kaisi and Zhang, Bingzi and Wang, Xihua and Ba, Ying and Cheng, Xin and Chen, Yijing and Song, Ruihua},
-  journal={arXiv preprint arXiv:2608.01310},
-  year={2026}
-}
 ```
 
