@@ -83,6 +83,7 @@ python -m eval.eval_mixed_retrieval \
   --model_path ./weights/pe-av-small \
   --lora_path ./weights/fate-lora \
   --test_dir ./data/avsync15 \
+  --dataset avsync \
   --num_distractors 0 \
   --ks 1 3 \
   --max_videos 1 \
@@ -122,4 +123,3 @@ bash scripts/train_example.sh
   year={2026}
 }
 ```
-
