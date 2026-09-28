@@ -15,11 +15,6 @@ hf download facebook/pe-av-small \
   --local-dir weights/pe-av-small
 ```
 
-```bash
-hf download Guan123/fate \
-  --local-dir weights/fate
-```
-
 ### 2. **Environment Setup**
 
 ```bash
@@ -42,9 +37,29 @@ data/
     *.mp4
 ```
 
+## Repository layout
+
+```text
+fate/
+  models/pe_av/                 # PE-AV backbone with frame-level outputs
+  eval/eval_mixed_retrieval.py  # main retrieval evaluator
+  scripts/eval_example.sh       # one-command evaluation
+  datasets.py                   # deterministic temporal segmentation
+  requirements.txt
+```
+
+Training and auxiliary evaluation code is retained for reference, but the supported release path is the final adapter plus `eval/eval_mixed_retrieval.py`
+
+## Train
+
+```
+bash scripts/train_example.sh
+```
 
 
 ## Quick start
+
+
 
 Then run AVSync-15 retrieval:
 
@@ -87,31 +102,5 @@ python -m eval.eval_mixed_retrieval \
   --ks 1 3 \
   --max_videos 1 \
   --max_segments 3
-```
-
-
-
-## Repository layout
-
-```text
-fate/
-  models/pe_av/                 # PE-AV backbone with frame-level outputs
-  eval/eval_mixed_retrieval.py  # main retrieval evaluator
-  scripts/eval_example.sh       # one-command evaluation
-  datasets.py                   # deterministic temporal segmentation
-  requirements.txt
-```
-
-Training and auxiliary evaluation code is retained for reference, but the supported release path is the final adapter plus `eval/eval_mixed_retrieval.py`
-
-## Train
-
-```
-bash scripts/train_example.sh
-```
-
-
-
-
 ```
 
