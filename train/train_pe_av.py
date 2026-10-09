@@ -1,7 +1,6 @@
 import os
 import argparse
 import logging
-import warnings
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -30,9 +29,6 @@ import threading
 import queue
 import itertools
 import time
-
-# Suppress gradient checkpointing warnings for frozen parameters (this is expected behavior)
-warnings.filterwarnings("ignore", message="None of the inputs have requires_grad=True", category=UserWarning)
 
 # 假设你的模型定义在这里
 from models.pe_av import PeAudioVideoModel, PeAudioVideoConfig, PeAudioVideoProcessor
@@ -679,7 +675,8 @@ def train(args):
         # model = PeftModel.from_pretrained(model, "/data1/kaisi/sync/checkpoints_vgg_round2/checkpoint-step-15000", is_trainable=True)
         if local_rank == 0:
             model.print_trainable_parameters()
-    model.gradient_checkpointing_enable()         
+    # Frozen embedders feed the encoder layers, so reentrant checkpointing would block LoRA gradients.
+    model.gradient_checkpointing_enable(gradient_checkpointing_kwargs={"use_reentrant": False})
     model.to(device)
     
     # Check if model has frozen parameters (which would require find_unused_parameters=True)
